@@ -8,14 +8,18 @@ test('Axis Remit Money Transfer Login', async ({ page }) => {
         const emailInput = page.getByPlaceholder('Enter your email id');
         const passwordInput = page.getByPlaceholder('Enter your password');
 
+        //From github
+        const loginEmail = process.env.QA_EMAIL;
+        const loginPassword = process.env.QA_PASSWORD;
+
         await page.goto(loginData.loginUrl);
         await expect(page.getByText('Welcome Back', { exact: true })).toBeVisible();
 
-        await emailInput.fill(loginData.email);
-        await expect(emailInput).toHaveValue(loginData.email);
+        await emailInput.fill(loginEmail);
+        await expect(emailInput).toHaveValue(loginEmail);
 
-        await passwordInput.fill(loginData.password);
-        await expect(passwordInput).toHaveValue(loginData.password);
+        await passwordInput.fill(loginPassword);
+        await expect(passwordInput).toHaveValue(loginPassword);
 
         await page.getByRole('button', { name: 'LOG IN' }).click();
 
