@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -37,7 +37,11 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        // viewport: { width: 1366, height: 768 }
+      },
+
     },
 
     {
