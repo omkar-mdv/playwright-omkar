@@ -1,7 +1,5 @@
 const { test, expect } = require('@playwright/test');
 
-test.use({ viewport: { width: 1280, height: 720 } });
-
 test('OrangeHRM Login Test', async ({ page }) => {
 
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
