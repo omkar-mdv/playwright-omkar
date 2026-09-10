@@ -22,7 +22,7 @@ test('OrangeHRM Login Test', async ({ page }) => {
     });
 });
 
-test.skip('OrangeHRM Login Test With Invalid Credentials', async ({ page }) => {
+test.only('OrangeHRM Login Test With Invalid Credentials', async ({ page }) => {
 
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
