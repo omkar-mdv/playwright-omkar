@@ -22,4 +22,15 @@ test('Dropdown Test', async ({ page }) => {
     console.log('All Dropdown Values ' + allDrpdwn);
     expect(allDrpdwn.includes('Maharashtra')).toBeTruthy();
 
+    let state = await page.$('#state');
+    let allStates = await state.$$('option');
+
+    for (let i = 0; i < allStates.length; i++) {
+        let element = allStates[i]
+
+        let values = await element.textContent();
+
+        console.log('All States are: ' + values);
+    }
+
 });
