@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const loginData = require('../test-data/loginData');
 
-test('Axis Remit Money Transfer Login', async ({ page }) => {
+test('Login Test', async ({ page }) => {
 
     // Group login actions into one test step
     await test.step('Open application and navigate to login', async () => {

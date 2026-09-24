@@ -22,7 +22,7 @@ function generateRandomUser() {
 }
 
 
-test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
+test('Sign Up Test', async ({ page }) => {
 
     // Generate random name and email
     const user = generateRandomUser();
