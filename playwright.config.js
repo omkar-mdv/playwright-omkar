@@ -38,14 +38,14 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+
       use: {
         ...devices['Desktop Chrome'],
-        viewport: { width: 1366, height: 768 },
         screenshot: 'only-on-failure',
+        viewport: { width: 1366, height: 641 },
         video: 'only-on-failure',
         trace: 'only-on-failure',
-      },
-
+      }
     },
 
     // {

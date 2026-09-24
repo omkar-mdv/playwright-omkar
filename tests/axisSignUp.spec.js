@@ -1,9 +1,9 @@
 const { test, expect } = require('@playwright/test');
 
+// Generate unique test user details
 function generateRandomUser() {
 
     const firstNames = ['Jason', 'Alex', 'David', 'John', 'Michael', 'Daniel'];
-
     const surnames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Miller', 'Davis'];
 
     const firstName =
@@ -21,14 +21,19 @@ function generateRandomUser() {
     };
 }
 
+
 test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
 
+    // Generate random name and email
     const user = generateRandomUser();
 
     console.log('Name:', user.name);
     console.log('Email:', user.email);
 
+
+    // Open application and navigate to Sign Up
     await test.step('Open application and navigate to Sign Up', async () => {
+
         await page.goto('https://qaonerxm.remit.in/#/');
 
         await page.getByRole('link', { name: 'Sign Up', exact: true }).click();
@@ -37,6 +42,7 @@ test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
     });
 
 
+    // Select country and Eurozone country
     await test.step('Select Country and Eurozone Country', async () => {
 
         await page.locator('#country').click();
@@ -47,6 +53,7 @@ test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
     });
 
 
+    // Enter user personal information
     await test.step('Enter Personal Details', async () => {
 
         const nameInput = page.getByPlaceholder('Enter your Name');
@@ -56,11 +63,9 @@ test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
 
         await nameInput.fill(user.name);
         await expect(nameInput).toHaveValue(user.name);
-        console.log(`Generated Name: ${user.name}`);
 
         await emailInput.fill(user.email);
         await expect(emailInput).toHaveValue(user.email);
-        console.log(`Generated Email: ${user.email}`);
 
         await passwordInput.fill('Password@1');
         await expect(passwordInput).toHaveValue('Password@1');
@@ -70,6 +75,7 @@ test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
     });
 
 
+    // Enter bank account details
     await test.step('Enter Account Details', async () => {
 
         const yesRadio = page.getByRole('radio', { name: 'Yes' });
@@ -89,6 +95,7 @@ test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
     });
 
 
+    // Select preferences and accept terms
     await test.step('Accept Preferences and Terms', async () => {
 
         const receiveMail = page.locator('#recvMailChk');
@@ -106,12 +113,14 @@ test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
     });
 
 
+    // Submit registration
     await test.step('Register Account', async () => {
 
         await page.getByRole('button', { name: 'REGISTER NOW' }).click();
     });
 
 
+    // Enter OTP and verify registration
     await test.step('Enter OTP and Verify Registration', async () => {
 
         const otpInput = page.locator('#otp');
@@ -121,8 +130,14 @@ test('Axis Remit Money Transfer Sign Up', async ({ page }) => {
 
         await page.getByRole('button', { name: 'VERIFY ACCOUNT' }).click();
 
+        // Verify successful registration
         await expect(page).toHaveURL('https://qaonerxm.remit.in/#/signin');
-        await expect(page.getByText('Thank you. You are successfully registered.', { exact: true })).toBeVisible();
 
+        await expect(
+            page.getByText(
+                'Thank you. You are successfully registered.',
+                { exact: true }
+            )
+        ).toBeVisible();
     });
 });
