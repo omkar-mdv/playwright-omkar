@@ -36,31 +36,35 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
+    // {
+    //   name: 'chromium',
 
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //     screenshot: 'only-on-failure',
+    //     viewport: { width: 1366, height: 641 },
+    //     video: 'only-on-failure',
+    //     trace: 'only-on-failure',
+    //   }
+    // },
+
+    {
+      name: 'firefox',
       use: {
-        ...devices['Desktop Chrome'],
-        screenshot: 'only-on-failure',
-        viewport: { width: 1366, height: 641 },
+        ...devices['Desktop Firefox'],
+        // viewport: { width: 1366, height: 768 },
         video: 'only-on-failure',
         trace: 'only-on-failure',
-      }
+      },
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: {
-    //     ...devices['Desktop Firefox'],
-    //     viewport: { width: 1366, height: 768 }
-    //   },
-    // },
 
     // {
     //   name: 'webkit',
     //   use: {
     //     ...devices['Desktop Safari'],
-    //     viewport: { width: 1366, height: 768 },
+    // viewport: { width: 1366, height: 768 },
+    //     video: 'only-on-failure',
+    //     trace: 'only-on-failure',
     //   },
     // },
 
